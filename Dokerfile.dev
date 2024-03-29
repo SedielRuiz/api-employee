@@ -1,11 +1,11 @@
 FROM node:21
 
+RUN npm i -g nodemon
+
 WORKDIR /home/app
 
-COPY . .
-
 RUN npm install
-
+ 
 EXPOSE 3015
 
 CMD ["npm", "run", "start:dev"]

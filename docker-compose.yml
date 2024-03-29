@@ -1,0 +1,19 @@
+version: "1.0.0"
+services:
+    human-talent:
+        build: .
+        ports:
+            - "3015:3015"
+        links:
+            - human-talent-postgres
+    human-talent-postgres: 
+        image: postgres:16.2
+        ports:
+            - "5433:5432"
+        environment:
+            - POSTGRES_PASSWORD=ss30_060rp
+            - POSTGRES_DB=human_talent
+        volumes:
+            - employee-data:/var/lib/postgresql/data
+volumes:
+    employee-data: 
