@@ -1,12 +1,12 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Employees } from 'src/domain/entities/employees.entity';
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/employee.request';
-import { Repository } from 'typeorm';
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Employees } from 'src/domain/entities/employees.entity'
+import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/employee.request'
+import { Repository } from 'typeorm'
 
 @Injectable()
 export class EmployeeRepository {
-    
+
     constructor(
         @InjectRepository(Employees)
         private employeeRepository: Repository<Employees>,
@@ -24,7 +24,7 @@ export class EmployeeRepository {
         const employee: Employees = await this.employeeRepository.save(data)
 
         if (!employee)
-            throw new NotFoundException(`Employee with [body: ${JSON.stringify(data)}] not created`);
+            throw new NotFoundException(`Employee with [body: ${JSON.stringify(data)}] not created`)
 
         return employee
     }
@@ -33,10 +33,17 @@ export class EmployeeRepository {
         const employee: any = await this.employeeRepository.update(id, data)
 
         if (!employee)
-            throw new NotFoundException(`Employee with [body: ${JSON.stringify(data)}] not updated`);
+            throw new NotFoundException(`Employee with [body: ${JSON.stringify(data)}] not updated`)
 
 
         return employee
+    }
+
+    async delete(id: number): Promise<Employees> {
+        const employee: any = await this.employeeRepository.delete(id)
+        if (!employee)
+            throw new NotFoundException(`Employee with ID ${id} not found`)
+            return employee
     }
 
 }

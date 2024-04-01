@@ -21,7 +21,7 @@ import { EmployeeController } from './controllers/employee/employee.controller';
     ],
     controllers: [AppController, EmployeeController],
     providers: [
-        AppService,  
+        AppService,
         Utilities,
         {
             provide: APP_INTERCEPTOR,

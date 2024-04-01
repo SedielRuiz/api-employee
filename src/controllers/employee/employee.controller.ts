@@ -2,6 +2,7 @@
 import {
     Body,
     Controller,
+    Delete,
     Get,
     Param,
     Post,
@@ -34,5 +35,10 @@ export class EmployeeController {
     async update(@Param() params, @Body() request: UpdateRequest): Promise<Response> {
         return await this.employeeOperation.update(params, request)
     }
-    
+
+    @Delete(employee.DELETE)
+    async delete(@Param() params): Promise<Response> {
+        return await this.employeeOperation.delete(params)
+    }
+
 }

@@ -14,7 +14,7 @@ async function bootstrap() {
     app.useGlobalFilters(new GlobalExceptionFilter())
     app.useGlobalPipes(new ValidationPipe())
     app.enableCors()
-    
+
     const swagger = new DocumentBuilder()
         .setTitle('API CORE EMPLOYEE')
         .setDescription('API ALL EMPLOYEE')
