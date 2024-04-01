@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Utilities } from '../utils/utilities'
 import { EmployeeController } from 'src/controllers/employee/employee.controller'
 import { Employees } from 'src/domain/entities/employees.entity'
 import { EmployeeService } from 'src/services/employee.service'
@@ -17,8 +16,7 @@ import { EmployeeOperation } from 'src/operations/employee.operation'
     providers: [
         EmployeeOperation,
         EmployeeService,
-        EmployeeRepository,
-        Utilities
+        EmployeeRepository
     ],
     exports: [TypeOrmModule, EmployeeOperation]
 })

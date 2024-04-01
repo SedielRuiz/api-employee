@@ -5,7 +5,6 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { typeOrmConfigAsync } from './config/typeorm.config'
 import { TransformInterceptor } from './domain/interceptors/transform.interceptor'
-import { Utilities } from './utils/utilities'
 import { EmployeeModule } from './modules/employee.module'
 import { AuthModule } from './modules/auth.module'
 import { UserModule } from './modules/users.module'
@@ -22,7 +21,6 @@ import { EmployeeController } from './controllers/employee/employee.controller';
     controllers: [AppController, EmployeeController],
     providers: [
         AppService,
-        Utilities,
         {
             provide: APP_INTERCEPTOR,
             useClass: TransformInterceptor,
