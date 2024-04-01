@@ -24,15 +24,15 @@ export abstract class BaseRequest<T> {
     abstract setPath(args: any) : any;
 
     abstract getMethod() : string;
-    
+
     getNameEvent = () => null
-    
+
     handlerResponse = (response: any) => null
 
     eventId = null;
 
 	detailable = false;
-    
+
     eventDetail = null;
 
     async run(requesterEntity: any, path : string = '', headersRequest: any = {}): Promise<T> {
@@ -53,7 +53,7 @@ export abstract class BaseRequest<T> {
             req = this.httpService.put(baseUrl, body, { headers: headers });
             break;
             case HttpMethods.GET:
-			  const urlParams = new URLSearchParams(body); 
+			  const urlParams = new URLSearchParams(body);
               const concatParams = (urlParams.toString().length > 0) ? `?${urlParams.toString()}` : ''
               const url = `${baseUrl}${concatParams}`
               this.logger.verbose(`RUN_REQUESTER_[Method: ${method} Url: ${url} Headers: ${JSON.stringify(headers)}`)

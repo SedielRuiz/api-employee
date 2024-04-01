@@ -23,4 +23,8 @@ export class EmployeeOperation implements BaseOperation<any, Promise<any>>
         await this.employeeService.update(params.id, data)
         return 'Updated successfull'
     }
+    async delete(id: number): Promise<any> {
+        await this.employeeService.delete(id)
+        return 'Deleted successfully'
+    }
 }

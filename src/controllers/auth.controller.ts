@@ -7,7 +7,7 @@ import { AuthService } from 'src/services/auth.service'
 @ApiTags('Auth')
 @Controller(version.V1+auth.BASE_ROUTE)
 export class AuthController {
-    
+
     constructor(private authService: AuthService) {}
 
     @Post(auth.LOGIN)
