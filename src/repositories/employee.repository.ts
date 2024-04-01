@@ -39,11 +39,10 @@ export class EmployeeRepository {
         return employee
     }
 
-    async delete(id: number): Promise<Employees> {
+    async delete(id: number) {
         const employee: any = await this.employeeRepository.delete(id)
         if (!employee)
             throw new NotFoundException(`Employee with ID ${id} not found`)
-            return employee
     }
 
 }
