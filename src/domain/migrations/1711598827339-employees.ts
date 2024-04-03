@@ -12,7 +12,6 @@ export class CreateEmployeesTable1612345678901 implements MigrationInterface {
                 "email" character varying NOT NULL,
                 "phone" character varying NOT NULL,
                 "address" character varying NOT NULL,
-                "position" character varying NOT NULL,
                 "status" boolean NOT NULL,
                 "department" character varying,
                 "salary" integer,

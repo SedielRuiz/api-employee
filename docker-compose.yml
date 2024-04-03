@@ -11,7 +11,7 @@ services:
         ports:
             - "5433:5432"
         environment:
-            - POSTGRES_PASSWORD=ss30_060rp
+            - POSTGRES_PASSWORD=123456789
             - POSTGRES_DB=human_talent
         volumes:
             - employee-data:/var/lib/postgresql/data
