@@ -37,13 +37,14 @@ $ docker exec -it api-employee-human-talent-1 npm run migration:run
 
 ## Installation local
 
-```bash
-$ npm install
-```
 
 ## Running the app
 
 ```bash
+
+# instaa dependencias
+$ npm install
+
 # development
 $ npm run start
 
