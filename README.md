@@ -26,7 +26,16 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+## Installation Docker
+
+```bash
+# Si corre con docker y quiere levantar la imagen y los contenedores
+$ docker compose up
+
+# Para ejecutar la migración con la tabla
+$ docker exec -it api-employee-human-talent-1 npm run migration:run
+
+## Installation local
 
 ```bash
 $ npm install
@@ -56,12 +65,6 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
-
-# Si corre con docker y quiere levantar la imagen y los contenedores
-$ docker compose up
-
-# Para ejecutar la migración con la tabla
-$ docker exec -it api-employee-human-talent-1 npm run migration:run
 ```
 
 ## Support
