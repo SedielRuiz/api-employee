@@ -14,6 +14,30 @@ export const employee = {
     DELETE: 'delete/:id'
 }
 
+export const relatives = {
+    BASE_ROUTE: 'relatives',
+    ALL: 'all',
+    CREATE: 'create',
+    UPDATE: 'update/:id',
+    DELETE: 'delete/:id'
+}
+
+export const documents = {
+    BASE_ROUTE: 'documents',
+    ALL: 'all',
+    CREATE: 'create',
+    UPDATE: 'update/:id',
+    DELETE: 'delete/:id'
+}
+
+export const afiliations = {
+    BASE_ROUTE: 'afiliations',
+    ALL: 'all',
+    CREATE: 'create',
+    UPDATE: 'update/:id',
+    DELETE: 'delete/:id'
+}
+
 export const auth = {
     BASE_ROUTE: 'auth',
     LOGIN: 'login',

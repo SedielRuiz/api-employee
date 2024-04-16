@@ -15,6 +15,7 @@ export class EmployeeRepository {
     async all (filter: ConsultRequest): Promise<Employees[]> {
         const employees: Employees[] = await this.employeeRepository.find({
             where: filter,
+            relations: ['relatives', 'documents', 'afiliations']
         })
 
         return employees

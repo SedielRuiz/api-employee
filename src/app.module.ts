@@ -9,7 +9,10 @@ import { EmployeeModule } from './modules/employee.module'
 import { AuthModule } from './modules/auth.module'
 import { UserModule } from './modules/users.module'
 import { AuthMiddleware } from './domain/middlewares/auth.middleware'
-import { EmployeeController } from './controllers/employee/employee.controller';
+import { EmployeeController } from './controllers/employee/employee.controller'
+import { AfiliationController } from './controllers/afiliation/afiliation.controller'
+import { DocumentController } from './controllers/document/document.controller'
+import { RelativeController } from './controllers/relative/relative.controller'
 
 @Module({
     imports: [
@@ -18,7 +21,7 @@ import { EmployeeController } from './controllers/employee/employee.controller';
         UserModule,
         EmployeeModule
     ],
-    controllers: [AppController, EmployeeController],
+    controllers: [AppController, EmployeeController, RelativeController, DocumentController, AfiliationController],
     providers: [
         AppService,
         {
