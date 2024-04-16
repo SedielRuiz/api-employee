@@ -5,12 +5,14 @@ import { Employees } from 'src/domain/entities/employees.entity'
 import { EmployeeService } from 'src/services/employee.service'
 import { EmployeeRepository } from 'src/repositories/employee.repository'
 import { EmployeeOperation } from 'src/operations/employee.operation'
+import { RelativeModule } from './relative.module'
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([
             Employees
-        ])
+        ]),
+        RelativeModule
     ],
     controllers: [EmployeeController],
     providers: [
@@ -18,6 +20,6 @@ import { EmployeeOperation } from 'src/operations/employee.operation'
         EmployeeService,
         EmployeeRepository
     ],
-    exports: [TypeOrmModule, EmployeeOperation]
+    exports: [TypeOrmModule, EmployeeOperation, EmployeeService, EmployeeRepository]
 })
 export class EmployeeModule {}
