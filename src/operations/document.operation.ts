@@ -1,30 +1,30 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { BaseOperation } from './base-operation'
-import { EmployeeService } from 'src/services/employee.service'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/employee.request'
+import { DocumentService } from 'src/services/document.service'
+import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/document.request'
 
 @Injectable()
 export class DocumentOperation implements BaseOperation<any, Promise<any>>
 {
     private readonly logger = new Logger(DocumentOperation.name)
     constructor(
-        private employeeService: EmployeeService
+        private documentService: DocumentService
     ) {}
 
     async execute(filters: ConsultRequest): Promise<any> {
-        return await this.employeeService.all(filters)
+        return await this.documentService.all(filters)
     }
 
     async create(data: CreateRequest): Promise<any> {
-        return await this.employeeService.create(data)
+        return await this.documentService.create(data)
     }
 
     async update(params, data: UpdateRequest): Promise<any> {
-        await this.employeeService.update(params.id, data)
+        await this.documentService.update(params.id, data)
         return 'Updated successfull'
     }
     async delete(id: number): Promise<any> {
-        await this.employeeService.delete(id)
+        await this.documentService.delete(id)
         return 'Deleted successfully'
     }
 }

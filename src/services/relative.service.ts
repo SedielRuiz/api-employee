@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/employee.request';
 import { RelativeRepository } from 'src/repositories/relative.repository';
 import { EmployeeRelatives } from 'src/domain/entities/employee-relatives.entity';
+import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/relative.request';
 
 @Injectable()
 export class RelativeService {
