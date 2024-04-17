@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { EmployeeRelatives } from 'src/domain/entities/employee-relatives.entity'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/employee.request'
+import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/relative.request'
 import { Repository } from 'typeorm'
 
 @Injectable()

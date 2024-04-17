@@ -1,7 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { BaseOperation } from './base-operation'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/employee.request'
+
 import { RelativeService } from 'src/services/relative.service'
+import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/relative.request'
 
 @Injectable()
 export class RelativeOperation implements BaseOperation<any, Promise<any>>

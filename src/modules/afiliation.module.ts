@@ -4,6 +4,8 @@ import { AfiliationController } from 'src/controllers/afiliation/afiliation.cont
 import { EmployeeAfiliations } from 'src/domain/entities/employee-afiliations.entity'
 import { AfiliationOperation } from 'src/operations/afiliation.operation'
 import { EmployeeModule } from './employee.module'
+import { AfiliationService } from 'src/services/afiliation.service'
+import { AfiliationRepository } from 'src/repositories/afiliation.repository'
 
 @Module({
     imports: [
@@ -14,7 +16,9 @@ import { EmployeeModule } from './employee.module'
     ],
     controllers: [AfiliationController],
     providers: [
-        AfiliationOperation
+        AfiliationOperation,
+        AfiliationService,
+        AfiliationRepository
     ],
     exports: [TypeOrmModule]
 })

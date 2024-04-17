@@ -4,6 +4,8 @@ import { DocumentController } from 'src/controllers/document/document.controller
 import { EmployeeDocuments } from 'src/domain/entities/employee-documents.entity'
 import { DocumentOperation } from 'src/operations/document.operation'
 import { EmployeeModule } from './employee.module'
+import { DocumentService } from 'src/services/document.service'
+import { DocumentRepository } from 'src/repositories/document.repository'
 
 @Module({
     imports: [
@@ -14,7 +16,9 @@ import { EmployeeModule } from './employee.module'
     ],
     controllers: [DocumentController],
     providers: [
-        DocumentOperation
+        DocumentOperation,
+        DocumentService,
+        DocumentRepository
     ],
     exports: [TypeOrmModule]
 })

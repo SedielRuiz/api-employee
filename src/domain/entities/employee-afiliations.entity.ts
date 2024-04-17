@@ -4,7 +4,7 @@ import { Employees } from "./employees.entity"
 @Entity()
 export class EmployeeAfiliations extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number  
+    id: number
 
     @Column()
     employeeId: number
