@@ -6,13 +6,14 @@ import {
     Get,
     Param,
     Post,
-    Put
+    Put,
+    Query
 } from '@nestjs/common'
 
 import { employee, version } from '../../routers/routes'
 import { Response } from 'express'
 import { ApiTags } from '@nestjs/swagger'
-import { EmployeeOperation } from 'src/operations/employee.operation'
+import { EmployeeOperation } from '@operation/employee.operation'
 import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/employee.request'
 
 @ApiTags('Employee')
@@ -22,7 +23,7 @@ export class EmployeeController {
     constructor(private employeeOperation: EmployeeOperation) {}
 
     @Get(employee.ALL)
-    async get(@Param() filters: ConsultRequest): Promise<Response> {
+    async get(@Query() filters: ConsultRequest): Promise<Response> {
         return await this.employeeOperation.execute(filters)
     }
 

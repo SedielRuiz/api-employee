@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { EmployeeAfiliations } from 'src/domain/entities/employee-afiliations.entity'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/afiliation.request'
+import { ConsultAfiliationRequest, CreateAfiliationRequest, UpdateAfiliationRequest } from 'src/requests/requesters/afiliation.request'
 import { Repository } from 'typeorm'
 
 @Injectable()
@@ -12,7 +12,7 @@ export class AfiliationRepository {
         private afiliationRepository: Repository<EmployeeAfiliations>,
     ) {}
 
-    async all (filter: ConsultRequest): Promise<EmployeeAfiliations[]> {
+    async all (filter: ConsultAfiliationRequest): Promise<EmployeeAfiliations[]> {
         const employeeAfiliations: EmployeeAfiliations[] = await this.afiliationRepository.find({
             where: filter,
         })
@@ -20,7 +20,7 @@ export class AfiliationRepository {
         return employeeAfiliations
     }
 
-    async create (data: CreateRequest): Promise<EmployeeAfiliations> {
+    async create (data: CreateAfiliationRequest): Promise<EmployeeAfiliations> {
         const employeeAfiliation: EmployeeAfiliations = await this.afiliationRepository.save(data)
 
         if (!employeeAfiliation)
@@ -29,7 +29,7 @@ export class AfiliationRepository {
         return employeeAfiliation
     }
 
-    async update (id: number, data: UpdateRequest): Promise<EmployeeAfiliations> {
+    async update (id: number, data: UpdateAfiliationRequest): Promise<EmployeeAfiliations> {
         const employeeAfiliation: any = await this.afiliationRepository.update(id, data)
 
         if (!employeeAfiliation)

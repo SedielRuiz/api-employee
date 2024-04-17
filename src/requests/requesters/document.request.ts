@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { IsNotEmpty, IsOptional } from 'class-validator'
 
-export class ConsultRequest {
+export class ConsultDocumentRequest {
 
     @ApiProperty({
         type: Number,
@@ -48,7 +48,7 @@ export class ConsultRequest {
     status?: boolean;
 }
 
-export class CreateRequest {
+export class CreateDocumentRequest {
 
     @ApiProperty({
         type: Number,
@@ -99,15 +99,7 @@ export class CreateRequest {
     status: boolean;
 }
 
-export class UpdateRequest {
-
-    @ApiProperty({
-        type: Number,
-        description: 'employeeId',
-        example: 1,
-    })
-    @IsNotEmpty()
-    employeeId: number;
+export class UpdateDocumentRequest {
 
     @ApiProperty({
         type: String,

@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { EmployeeDocuments } from 'src/domain/entities/employee-documents.entity'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/document.request'
+import { ConsultDocumentRequest, CreateDocumentRequest, UpdateDocumentRequest } from 'src/requests/requesters/document.request'
 import { Repository } from 'typeorm'
 
 @Injectable()
@@ -12,7 +12,7 @@ export class DocumentRepository {
         private documentsRepository: Repository<EmployeeDocuments>,
     ) {}
 
-    async all (filter: ConsultRequest): Promise<EmployeeDocuments[]> {
+    async all (filter: ConsultDocumentRequest): Promise<EmployeeDocuments[]> {
         const employeeDocuments: EmployeeDocuments[] = await this.documentsRepository.find({
             where: filter,
         })
@@ -20,7 +20,7 @@ export class DocumentRepository {
         return employeeDocuments
     }
 
-    async create (data: CreateRequest): Promise<EmployeeDocuments> {
+    async create (data: CreateDocumentRequest): Promise<EmployeeDocuments> {
         const employeeDocument: EmployeeDocuments = await this.documentsRepository.save(data)
 
         if (!employeeDocument)
@@ -29,7 +29,7 @@ export class DocumentRepository {
         return employeeDocument
     }
 
-    async update (id: number, data: UpdateRequest): Promise<EmployeeDocuments> {
+    async update (id: number, data: UpdateDocumentRequest): Promise<EmployeeDocuments> {
         const employeeDocument: any = await this.documentsRepository.update(id, data)
 
         if (!employeeDocument)

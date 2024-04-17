@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { BaseOperation } from './base-operation'
 import { DocumentService } from 'src/services/document.service'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/document.request'
+import { ConsultDocumentRequest, CreateDocumentRequest, UpdateDocumentRequest } from 'src/requests/requesters/document.request'
 
 @Injectable()
 export class DocumentOperation implements BaseOperation<any, Promise<any>>
@@ -11,15 +11,15 @@ export class DocumentOperation implements BaseOperation<any, Promise<any>>
         private documentService: DocumentService
     ) {}
 
-    async execute(filters: ConsultRequest): Promise<any> {
+    async execute(filters: ConsultDocumentRequest): Promise<any> {
         return await this.documentService.all(filters)
     }
 
-    async create(data: CreateRequest): Promise<any> {
+    async create(data: CreateDocumentRequest): Promise<any> {
         return await this.documentService.create(data)
     }
 
-    async update(params, data: UpdateRequest): Promise<any> {
+    async update(params, data: UpdateDocumentRequest): Promise<any> {
         await this.documentService.update(params.id, data)
         return 'Updated successfull'
     }

@@ -36,7 +36,7 @@ import { AfiliationModule } from './modules/afiliation.module'
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         consumer.apply(AuthMiddleware)
-        .exclude('/v1/auth/login')
+        .exclude('/v1/auth/login', '/')
         .forRoutes('*')
     }
 }
