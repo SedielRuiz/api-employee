@@ -32,8 +32,8 @@ export const documents = {
 
 export const afiliations = {
     BASE_ROUTE: 'afiliations',
-    ALL: 'all',
-    CREATE: 'create',
+    ALL: 'all/:employeeId',
+    CREATE: 'create/:employeeId',
     UPDATE: 'update/:id',
     DELETE: 'delete/:id'
 }

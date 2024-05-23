@@ -12,12 +12,14 @@ export class AfiliationOperation implements BaseOperation<any, Promise<any>>
         private afiliationService: AfiliationService
     ) {}
 
-    async execute(filters: ConsultRequest): Promise<any> {
-        return await this.afiliationService.all(filters)
+    async execute(params, filters: ConsultRequest): Promise<any> {
+        return await this.afiliationService.all(params.id,filters)
     }
 
-    async create(data: CreateRequest): Promise<any> {
-        return await this.afiliationService.create(data)
+    async create(employeeId: number, data: CreateRequest): Promise<any> {
+        console.log('AfiliationOperation - idEmployee:', employeeId);  // Log para depuración
+        console.log('AfiliationOperation - CreateRequest:', data);
+        return await this.afiliationService.create(employeeId, data);
     }
 
     async update(params, data: UpdateRequest): Promise<any> {

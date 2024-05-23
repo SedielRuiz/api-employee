@@ -12,15 +12,18 @@ export class AfiliationRepository {
         private afiliationRepository: Repository<EmployeeAfiliations>,
     ) {}
 
-    async all (filter: ConsultRequest): Promise<EmployeeAfiliations[]> {
+    async all(id: number, filter: ConsultRequest): Promise<EmployeeAfiliations[]> {
         const employeeAfiliations: EmployeeAfiliations[] = await this.afiliationRepository.find({
-            where: filter,
-        })
-
-        return employeeAfiliations
-    }
+          where: {
+            employeeId: id,
+            ...filter,
+          },
+        });
+        return employeeAfiliations;
+      }
 
     async create (data: CreateRequest): Promise<EmployeeAfiliations> {
+        console.log(data);
         const employeeAfiliation: EmployeeAfiliations = await this.afiliationRepository.save(data)
 
         if (!employeeAfiliation)

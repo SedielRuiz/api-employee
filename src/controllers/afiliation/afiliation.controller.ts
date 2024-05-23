@@ -12,14 +12,17 @@ export class AfiliationController {
     constructor(private afiliationOperation: AfiliationOperation) {}
 
     @Get(afiliations.ALL)
-    async get(@Param() filters: ConsultRequest): Promise<Response> {
-        return await this.afiliationOperation.execute(filters)
+    async get(@Param() params,  filters: ConsultRequest): Promise<Response> {
+        return await this.afiliationOperation.execute(params, filters)
     }
 
     @Post(afiliations.CREATE)
-    async create(@Body() request: CreateRequest): Promise<Response> {
-        return await this.afiliationOperation.create(request)
+    async create(@Param('employeeId') employeeId: number, @Body() request: CreateRequest): Promise<any> {
+        console.log('employeeId:', employeeId);  // Debugging log
+        console.log('CreateRequest:', request);  // Debugging log
+        return await this.afiliationOperation.create(employeeId, request);
     }
+
 
     @Put(afiliations.UPDATE)
     async update(@Param() params, @Body() request: UpdateRequest): Promise<Response> {

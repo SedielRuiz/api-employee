@@ -28,6 +28,7 @@ export class EmployeeController {
 
     @Post(employee.CREATE)
     async create(@Body() request: CreateRequest): Promise<Response> {
+        console.log('CreateRequestUser:', request);  // Debugging log
         return await this.employeeOperation.create(request)
     }
 
