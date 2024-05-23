@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional } from 'class-validator';
 
-export class ConsultRequest {
+export class ConsultAfiliationRequest {
 
     @ApiProperty({
         type: Number,
@@ -37,7 +37,7 @@ export class ConsultRequest {
 
 }
 
-export class CreateRequest {
+export class CreateAfiliationRequest {
 
     @ApiProperty({
         type: Number,
@@ -73,15 +73,7 @@ export class CreateRequest {
 
 }
 
-export class UpdateRequest {
-
-    @ApiProperty({
-        type: Number,
-        description: 'employeeId',
-        example: 1,
-    })
-    @IsNotEmpty()
-    employeeId: number;
+export class UpdateAfiliationRequest {
 
     @ApiProperty({
         type: String,

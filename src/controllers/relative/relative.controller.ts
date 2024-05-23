@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common'
 import { ApiTags } from '@nestjs/swagger'
 import { RelativeOperation } from 'src/operations/relative.operation'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/relative.request'
+import { ConsultRelativeRequest, CreateRelativeRequest, UpdateRelativeRequest } from 'src/requests/requesters/relative.request'
 import { employee, relatives, version } from 'src/routers/routes'
 
 @ApiTags('Relatives')
@@ -11,17 +11,17 @@ export class RelativeController {
     constructor(private relativeOperation: RelativeOperation) {}
 
     @Get(relatives.ALL)
-    async get(@Param() filters: ConsultRequest): Promise<Response> {
+    async get(@Query() filters: ConsultRelativeRequest): Promise<Response> {
         return await this.relativeOperation.execute(filters)
     }
 
     @Post(relatives.CREATE)
-    async create(@Body() request: CreateRequest): Promise<Response> {
+    async create(@Body() request: CreateRelativeRequest): Promise<Response> {
         return await this.relativeOperation.create(request)
     }
 
     @Put(relatives.UPDATE)
-    async update(@Param() params, @Body() request: UpdateRequest): Promise<Response> {
+    async update(@Param() params, @Body() request: UpdateRelativeRequest): Promise<Response> {
         return await this.relativeOperation.update(params, request)
     }
 

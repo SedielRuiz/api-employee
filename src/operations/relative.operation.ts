@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { BaseOperation } from './base-operation'
 
 import { RelativeService } from 'src/services/relative.service'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/relative.request'
+import { ConsultRelativeRequest, CreateRelativeRequest, UpdateRelativeRequest } from 'src/requests/requesters/relative.request'
 
 @Injectable()
 export class RelativeOperation implements BaseOperation<any, Promise<any>>
@@ -12,15 +12,15 @@ export class RelativeOperation implements BaseOperation<any, Promise<any>>
         private relativeService: RelativeService
     ) {}
 
-    async execute(filters: ConsultRequest): Promise<any> {
+    async execute(filters: ConsultRelativeRequest): Promise<any> {
         return await this.relativeService.all(filters)
     }
 
-    async create(data: CreateRequest): Promise<any> {
+    async create(data: CreateRelativeRequest): Promise<any> {
         return await this.relativeService.create(data)
     }
 
-    async update(params, data: UpdateRequest): Promise<any> {
+    async update(params, data: UpdateRelativeRequest): Promise<any> {
         await this.relativeService.update(params.id, data)
         return 'Updated successfull'
     }

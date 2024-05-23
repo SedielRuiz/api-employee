@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common'
 import { RelativeRepository } from 'src/repositories/relative.repository';
 import { EmployeeRelatives } from 'src/domain/entities/employee-relatives.entity';
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/relative.request';
+import { ConsultRelativeRequest, CreateRelativeRequest, UpdateRelativeRequest } from 'src/requests/requesters/relative.request';
 
 @Injectable()
 export class RelativeService {
@@ -9,15 +9,15 @@ export class RelativeService {
 
     constructor(private employeeRelativeRepository: RelativeRepository) {}
 
-    async all (filter: ConsultRequest): Promise<EmployeeRelatives[]> {
+    async all (filter: ConsultRelativeRequest): Promise<EmployeeRelatives[]> {
         return await this.employeeRelativeRepository.all(filter)
     }
 
-    async create (data: CreateRequest): Promise<EmployeeRelatives> {
+    async create (data: CreateRelativeRequest): Promise<EmployeeRelatives> {
         return await this.employeeRelativeRepository.create(data)
     }
 
-    async update (id: number, data: UpdateRequest): Promise<EmployeeRelatives> {
+    async update (id: number, data: UpdateRelativeRequest): Promise<EmployeeRelatives> {
         return await this.employeeRelativeRepository.update(id, data)
     }
 

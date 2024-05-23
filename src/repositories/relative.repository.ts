@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { EmployeeRelatives } from 'src/domain/entities/employee-relatives.entity'
-import { ConsultRequest, CreateRequest, UpdateRequest } from 'src/requests/requesters/relative.request'
+import { ConsultRelativeRequest, CreateRelativeRequest, UpdateRelativeRequest } from 'src/requests/requesters/relative.request'
 import { Repository } from 'typeorm'
 
 @Injectable()
@@ -12,16 +12,16 @@ export class RelativeRepository {
         private relativeRepository: Repository<EmployeeRelatives>,
     ) {}
 
-    async all (filter: ConsultRequest): Promise<EmployeeRelatives[]> {
+    async all (filter: ConsultRelativeRequest): Promise<EmployeeRelatives[]> {
         const employeeRelatives: EmployeeRelatives[] = await this.relativeRepository.find({
             where: filter,
-            relations: ['relatives', 'documents', 'afiliations']
+            relations: ['employee']
         })
 
         return employeeRelatives
     }
 
-    async create (data: CreateRequest): Promise<EmployeeRelatives> {
+    async create (data: CreateRelativeRequest): Promise<EmployeeRelatives> {
         const employeeRelative: EmployeeRelatives = await this.relativeRepository.save(data)
 
         if (!employeeRelative)
@@ -30,7 +30,7 @@ export class RelativeRepository {
         return employeeRelative
     }
 
-    async update (id: number, data: UpdateRequest): Promise<EmployeeRelatives> {
+    async update (id: number, data: UpdateRelativeRequest): Promise<EmployeeRelatives> {
         const employeeRelative: any = await this.relativeRepository.update(id, data)
 
         if (!employeeRelative)
